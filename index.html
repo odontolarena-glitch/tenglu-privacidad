@@ -138,6 +138,15 @@ el dispositivo mediante código, Face ID o Touch ID y compartir informes únicam
 con personas de confianza.
 </p>
 
+<p>
+Para limitar intentos automatizados, enumeración de códigos y abuso del correo de
+verificación, el backend puede generar identificadores técnicos temporales mediante
+funciones criptográficas a partir de la dirección de conexión o del correo introducido.
+Estos controles no almacenan la dirección IP ni el correo en claro dentro del almacén
+antiabuso, se utilizan únicamente para aplicar límites de frecuencia y se marcan para
+eliminación una vez finalizada la ventana correspondiente.
+</p>
+
 <h2>8. Servicios de Apple</h2>
 
 <p>
