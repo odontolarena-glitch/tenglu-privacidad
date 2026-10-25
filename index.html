@@ -53,7 +53,7 @@ o elaboración de perfiles comerciales.
 TENGLU registra eventos técnicos mínimos de uso y adopción y los consulta en forma de
 contadores agregados para conocer, por ejemplo, el inicio y finalización de la guía,
 la instalación, las sesiones y protocolos AMPA, el uso de controles personalizados y
-medicación, la generación y entrega de informes, las compras y determinadas acciones
+medicación, la generación de informes y su aceptación para envío, las compras y determinadas acciones
 relacionadas con identificaciones profesionales, QR, códigos y carteles.
 </p>
 
@@ -94,6 +94,17 @@ Cuando el usuario comparte un informe mediante correo electrónico, WhatsApp,
 AirDrop, Archivos u otra aplicación o servicio del dispositivo, dicho tratamiento
 posterior queda sujeto a las condiciones y políticas de privacidad del servicio
 elegido por el usuario.
+</p>
+
+<p>
+Cuando el usuario utiliza el canal protegido de TENGLU para remitir un informe a un
+profesional, TENGLU utiliza un proveedor de correo transaccional para transportar el
+mensaje y el PDF. La configuración prevista para producción establece en el dominio
+utilizado por TENGLU una retención de contenido de mensajes de <strong>0 días</strong>
+y una regla de recepción que reenvía el mensaje al backend de TENGLU sin utilizar la
+acción de almacenamiento del proveedor. Los registros técnicos de eventos o logs del
+proveedor son distintos del almacenamiento del contenido del mensaje y pueden conservarse
+durante el plazo aplicable al plan y a la configuración del servicio.
 </p>
 
 <h2>4. Compras dentro de la aplicación</h2>
