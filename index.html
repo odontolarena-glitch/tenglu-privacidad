@@ -103,8 +103,11 @@ mensaje y el PDF. La configuración prevista para producción establece en el do
 utilizado por TENGLU una retención de contenido de mensajes de <strong>0 días</strong>
 y una regla de recepción que reenvía el mensaje al backend de TENGLU sin utilizar la
 acción de almacenamiento del proveedor. Los registros técnicos de eventos o logs del
-proveedor son distintos del almacenamiento del contenido del mensaje y pueden conservarse
-durante el plazo aplicable al plan y a la configuración del servicio.
+proveedor son distintos del almacenamiento del contenido del mensaje. Según el servicio,
+pueden incluir metadatos de transporte como direcciones de remitente o destinatario,
+asunto, nombre del archivo adjunto, estado de entrega y marcas de tiempo, y conservarse
+durante el plazo aplicable al plan y a la configuración del proveedor. TENGLU desactiva
+el seguimiento de aperturas y clics en los mensajes que envía mediante este canal.
 </p>
 
 <h2>4. Compras dentro de la aplicación</h2>
