@@ -29,12 +29,12 @@
 
 <h1>Política de privacidad de TENGLU</h1>
 
-<p><strong>Última actualización:</strong> 21 de octubre de 2026</p>
+<p><strong>Última actualización:</strong> 25 de octubre de 2026</p>
 
 <div class="box">
 <p>
 TENGLU es una aplicación destinada a facilitar el registro y organización
-personal de mediciones de salud, medicación y controles personalizados,
+personal de mediciones de salud, medicación y seguimiento domiciliario,
 así como la creación de informes que el usuario puede guardar o compartir
 voluntariamente con su profesional sanitario.
 </p>
@@ -44,15 +44,27 @@ voluntariamente con su profesional sanitario.
 
 <p>
 Las mediciones introducidas en TENGLU, incluyendo datos como presión arterial,
-glucemia, peso y medicación, se almacenan principalmente en el dispositivo del usuario.
+glucemia, peso, saturación de oxígeno, temperatura y medicación, se almacenan principalmente en el dispositivo del usuario.
 TENGLU no crea una cuenta clínica del paciente ni utiliza estos datos para publicidad
 o elaboración de perfiles comerciales.
 </p>
 
 <p>
-TENGLU puede registrar contadores técnicos o estadísticas agregadas de uso y adopción
-de determinadas funciones, sin incluir valores clínicos ni identificadores directos
-del paciente.
+TENGLU registra eventos técnicos mínimos de uso y adopción y los consulta en forma de
+contadores agregados para conocer, por ejemplo, el inicio y finalización de la guía,
+la instalación, las sesiones y protocolos AMPA, el uso del seguimiento domiciliario y
+medicación, la generación de informes y su aceptación para envío, las compras y determinadas acciones
+relacionadas con identificaciones profesionales, QR, códigos y carteles.
+</p>
+
+<p>
+Para evitar duplicados, el almacenamiento técnico de estas métricas puede contener
+identificadores aleatorios u opacos de evento o lote y marcas de tiempo. No contienen
+valores de presión arterial, pulso, glucemia, peso, saturación de oxígeno o temperatura, medicación concreta, nombres, direcciones
+de correo electrónico, códigos profesionales, destinationId, centro, especialidad,
+identificadores de paciente ni archivos PDF, y no se utilizan para crear perfiles.
+Los contadores reflejan eventos de uso y no personas únicas: una misma persona o
+dispositivo puede generar más de un evento.
 </p>
 
 <h2>2. Profesionales y centros</h2>
@@ -84,17 +96,44 @@ posterior queda sujeto a las condiciones y políticas de privacidad del servicio
 elegido por el usuario.
 </p>
 
+<p>
+Cuando el usuario utiliza el canal protegido de TENGLU para remitir un informe a un
+profesional, TENGLU utiliza un proveedor de correo transaccional para transportar el
+mensaje y el PDF. La configuración prevista para producción establece en el dominio
+utilizado por TENGLU una retención de contenido de mensajes de <strong>0 días</strong>
+y una regla de recepción que reenvía el mensaje al backend de TENGLU sin utilizar la
+acción de almacenamiento del proveedor. Los registros técnicos de eventos o logs del
+proveedor son distintos del almacenamiento del contenido del mensaje. Según el servicio,
+pueden incluir metadatos de transporte como direcciones de remitente o destinatario,
+asunto, nombre del archivo adjunto, estado de entrega y marcas de tiempo, y conservarse
+durante el plazo aplicable al plan y a la configuración del proveedor. TENGLU desactiva
+el seguimiento de aperturas y clics en los mensajes que envía mediante este canal.
+</p>
+
+<p>
+Para que los informes sucesivos enviados desde un mismo dispositivo a un mismo
+profesional puedan aparecer agrupados en una conversación de correo, TENGLU puede
+utilizar un identificador aleatorio creado localmente para ese profesional. El backend
+no conserva ese valor local: obtiene a partir de él y del destino profesional un
+identificador opaco mediante una función criptográfica y guarda únicamente el metadato
+mínimo necesario para mantener el hilo, como el identificador técnico del mensaje raíz,
+una etiqueta opaca de asunto y marcas de tiempo. Este registro no contiene el nombre ni
+el correo del paciente, mediciones, medicación, archivos PDF ni el cuerpo de los
+mensajes, y no se utiliza para analítica ni perfilado.
+</p>
+
 <h2>4. Compras dentro de la aplicación</h2>
 
 <p>
-La función “Controles personalizados” puede desbloquearse mediante una compra
-única dentro de la aplicación. Las compras son gestionadas por Apple mediante
-App Store y StoreKit.
+La función “Seguimiento domiciliario” puede desbloquearse mediante una compra
+única dentro de la aplicación. Según el dispositivo, las compras son gestionadas
+por Apple mediante App Store / StoreKit o por Google mediante Google Play Billing.
 </p>
 
 <p>
 TENGLU no recibe ni almacena los datos completos de la tarjeta bancaria del usuario.
-La gestión del pago, facturación y validación de la compra corresponde a Apple.
+La gestión del pago, facturación y validación de la compra corresponde a la tienda
+de aplicaciones utilizada en el dispositivo.
 </p>
 
 <h2>5. Publicidad y perfilado</h2>
@@ -113,8 +152,47 @@ o desinstale la aplicación, según corresponda.
 </p>
 
 <p>
-Las copias de seguridad realizadas por el sistema operativo o por servicios de Apple
-dependen de la configuración elegida por el propio usuario.
+Las copias de seguridad realizadas por el sistema operativo o por servicios asociados
+al dispositivo, como iCloud o los servicios de Google, dependen de la configuración
+elegida por el propio usuario.
+</p>
+
+<p>
+Las altas profesionales que no llegan a verificarse tienen una fecha de caducidad y
+se eliminan mediante la limpieza programada del servicio, junto con su código reservado.
+Cuando una identificación profesional está activa, no caduca automáticamente por el
+paso del tiempo. Su QR y su código siguen siendo los mismos para todos sus pacientes
+hasta que el propio profesional decida desactivarla. La dirección de correo se conserva
+cifrada mientras la identificación permanezca activa para recibir los informes que los
+pacientes decidan enviar. El profesional puede utilizar un enlace privado de desactivación
+o solicitar uno nuevo
+desde su página profesional introduciendo el mismo email con el que activó TENGLU.
+Ese email se utiliza para comprobar la solicitud y no se guarda de nuevo en el navegador.
+Tras confirmar la desactivación, TENGLU borra el destino profesional y desactiva su QR
+y su código.
+</p>
+
+<p>
+Las direcciones temporales utilizadas para permitir una respuesta del profesional al
+paciente caducan y se eliminan mediante la limpieza programada. La revocación de una
+identificación profesional impide nuevos envíos a ese destino aunque todavía existan
+registros temporales pendientes de su caducidad técnica.
+</p>
+
+<p>
+Los metadatos opacos utilizados exclusivamente para agrupar informes por conversación
+se mantienen separados del contenido clínico y de las métricas de uso. Cuando el
+profesional desactiva y borra su identificación TENGLU, también se eliminan las anclas
+de conversación asociadas a ese destino.
+</p>
+
+<p>
+Durante el paso de Safari a la aplicación web instalada en iPhone, TENGLU puede conservar
+temporalmente, durante un máximo de 24 horas, uno o varios códigos profesionales públicos
+de 6 cifras para recuperar en el icono instalado los profesionales que el paciente acaba
+de añadir. Esa cookie no contiene direcciones de correo, nombres, datos clínicos ni
+identificadores de paciente y se elimina al recuperar esos códigos o al borrar los
+profesionales guardados.
 </p>
 
 <h2>7. Seguridad</h2>
@@ -124,6 +202,15 @@ TENGLU está diseñada para minimizar la transmisión de información de salud y
 los datos personales en el dispositivo siempre que sea posible. Se recomienda proteger
 el dispositivo mediante código, Face ID o Touch ID y compartir informes únicamente
 con personas de confianza.
+</p>
+
+<p>
+Para limitar intentos automatizados, enumeración de códigos y abuso del correo de
+verificación, el backend puede generar identificadores técnicos temporales mediante
+funciones criptográficas a partir de la dirección de conexión o del correo introducido.
+Estos controles no almacenan la dirección IP ni el correo en claro dentro del almacén
+antiabuso, se utilizan únicamente para aplicar límites de frecuencia y se marcan para
+eliminación una vez finalizada la ventana correspondiente.
 </p>
 
 <h2>8. Servicios de Apple</h2>
