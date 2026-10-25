@@ -29,7 +29,7 @@
 
 <h1>Política de privacidad de TENGLU</h1>
 
-<p><strong>Última actualización:</strong> 24 de octubre de 2026</p>
+<p><strong>Última actualización:</strong> 25 de octubre de 2026</p>
 
 <div class="box">
 <p>
@@ -110,6 +110,18 @@ durante el plazo aplicable al plan y a la configuración del proveedor. TENGLU d
 el seguimiento de aperturas y clics en los mensajes que envía mediante este canal.
 </p>
 
+<p>
+Para que los informes sucesivos enviados desde un mismo dispositivo a un mismo
+profesional puedan aparecer agrupados en una conversación de correo, TENGLU puede
+utilizar un identificador aleatorio creado localmente para ese profesional. El backend
+no conserva ese valor local: obtiene a partir de él y del destino profesional un
+identificador opaco mediante una función criptográfica y guarda únicamente el metadato
+mínimo necesario para mantener el hilo, como el identificador técnico del mensaje raíz,
+una etiqueta opaca de asunto y marcas de tiempo. Este registro no contiene el nombre ni
+el correo del paciente, mediciones, medicación, archivos PDF ni el cuerpo de los
+mensajes, y no se utiliza para analítica ni perfilado.
+</p>
+
 <h2>4. Compras dentro de la aplicación</h2>
 
 <p>
@@ -165,6 +177,13 @@ Las direcciones temporales utilizadas para permitir una respuesta del profesiona
 paciente caducan y se eliminan mediante la limpieza programada. La revocación de una
 identificación profesional impide nuevos envíos a ese destino aunque todavía existan
 registros temporales pendientes de su caducidad técnica.
+</p>
+
+<p>
+Los metadatos opacos utilizados exclusivamente para agrupar informes por conversación
+se mantienen separados del contenido clínico y de las métricas de uso. Cuando el
+profesional desactiva y borra su identificación TENGLU, también se eliminan las anclas
+de conversación asociadas a ese destino.
 </p>
 
 <p>
